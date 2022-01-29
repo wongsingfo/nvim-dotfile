@@ -15,6 +15,9 @@ return require('packer').startup(function()
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
+	-- Run `:Copilot setup` to setup
+	use 'github/copilot.vim'
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then
