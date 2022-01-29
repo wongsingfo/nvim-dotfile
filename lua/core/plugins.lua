@@ -12,6 +12,10 @@ vim.cmd([[
   augroup end
 ]])
 
+-- Need to install ripgrpe
+-- https://github.com/BurntSushi/ripgrep
+--   <choco|apt|brew> install ripgrep
+
 require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
@@ -30,15 +34,41 @@ require('packer').startup(function(use)
 		'kyazdani42/nvim-tree.lua',
 		requires = 'kyazdani42/nvim-web-devicons',
 		config = function()
-			require'nvim-tree'.setup {}
+			require'nvim-tree'.setup {
+				view = {
+					mappings = {
+						list = { { key = "?", action = "toggle_help" } }
+					}
+				}
+			}
 		end
 	}
 
 	use 'tpope/vim-surround'
 
+	-- Use `s` to move the cursor
 	use 'justinmk/vim-sneak'
 
 	use 'chrisbra/vim-commentary'
+
+	use 'vim-airline/vim-airline'
+
+	use {
+		'nvim-telescope/telescope.nvim',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
+
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate'
+	}
+
+	use {
+		'folke/which-key.nvim',
+		config = function()
+			require'which-key'.setup { }
+		end
+	}
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
