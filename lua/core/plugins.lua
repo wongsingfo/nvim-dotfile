@@ -1,3 +1,4 @@
+local vim = vim
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -11,12 +12,33 @@ vim.cmd([[
   augroup end
 ]])
 
-return require('packer').startup(function()
+require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
 	-- Run `:Copilot setup` to setup
 	use 'github/copilot.vim'
+
+	-- Find extension: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+	use { 'neoclide/coc.nvim', branch = 'release' }
+
+	-- Color scheme
+	use 'jacoborus/tender.vim'
+
+	-- File manager
+	use {
+		'kyazdani42/nvim-tree.lua',
+		requires = 'kyazdani42/nvim-web-devicons',
+		config = function()
+			require'nvim-tree'.setup {}
+		end
+	}
+
+	use 'tpope/vim-surround'
+
+	use 'justinmk/vim-sneak'
+
+	use 'chrisbra/vim-commentary'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

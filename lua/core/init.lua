@@ -1,3 +1,4 @@
-local plugins = require("core.plugins")
-
+require("core.plugins")
+require("core.preference")
+require("core.keybindings")
 
