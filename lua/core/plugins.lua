@@ -24,6 +24,7 @@ require('packer').startup(function(use)
 	use 'github/copilot.vim'
 
 	-- Find extension: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+	-- CocInstall coc-highlight coc-git
 	use { 'neoclide/coc.nvim', branch = 'release' }
 
 	-- Color scheme
@@ -51,7 +52,13 @@ require('packer').startup(function(use)
 
 	use 'chrisbra/vim-commentary'
 
-	use 'vim-airline/vim-airline'
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+		config = function()
+			require('lualine').setup {}
+		end
+	}
 
 	use {
 		'nvim-telescope/telescope.nvim',
@@ -69,6 +76,43 @@ require('packer').startup(function(use)
 			require'which-key'.setup { }
 		end
 	}
+
+	use {
+		'akinsho/bufferline.nvim',
+		requires = 'kyazdani43/nvim-web-devicons',
+		config = function()
+			require('bufferline').setup {}
+		end
+	}
+
+	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
+	use {
+		'goolord/alpha-nvim',
+		requires = { 'kyazdani42/nvim-web-devicons' },
+		config = function()
+			require'alpha'.setup(require'alpha.themes.startify'.config)
+		end
+	}
+
+	use {
+		"akinsho/toggleterm.nvim",
+		disable = true,
+		config = function()
+			require('toggleterm').setup{}
+		end
+	}
+
+	use {
+		"nikvdp/neomux",
+	}
+
+	use {
+		"luukvbaal/stabilize.nvim",
+		config = function() require("stabilize").setup() end
+	}
+
+	use 'simeji/winresizer'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
