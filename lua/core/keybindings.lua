@@ -45,6 +45,7 @@ map('n', '<leader>pt', '<cmd>Telescope help_tags<CR>', opt)
 -- Diffview
 map('n', '<leader>pd', '<cmd>DiffviewOpen<CR>', opt)
 map('n', '<leader>pD', '<cmd>DiffviewFileHistory<cr>', opt)
+map('n', '<leader>pr', '<cmd>DiffviewRefresh<cr>', opt)
 map('n', '<leader>pc', '<cmd>DiffviewClose<cr>', opt)
 -- NvimTree
 map('n', '<c-n>', '<cmd>NvimTreeToggle<CR>', opt)
