@@ -31,7 +31,7 @@ wk.register({
 		name = 'BufferLine',
 	},
 	s = {
-		name = 'Neomux',
+		name = 'Neomux and WindowResizer',
 	},
 }, { prefix = '<leader>' })
 
@@ -63,6 +63,8 @@ map('n', '<leader>bc', '<cmd>BufferLinePickClose<cr>', opt)
 for i = 1, 9 do
 	map('n', '<c-'..i..'>', '<cmd>BufferLineGoToBuffer '..i..'<cr>', opt)
 end
+-- Window resizer
+vim.g.winresizer_start_key = '<leader>sr'
 
 wk.register({
 	["<c-n>"] = "NvimTreeToggle",
@@ -71,6 +73,5 @@ wk.register({
 	["<c-space>"] = "Coc refresh",
 	["<c-num>"] = "Switch BufferLine",
 	["<c-s>"] = "Exit insert mode in neomux",
-	["<c-e>"] = "Resize window",
 }, { prefix = '?' })
 

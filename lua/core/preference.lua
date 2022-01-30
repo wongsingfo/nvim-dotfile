@@ -3,7 +3,8 @@ local vim = vim
 -- Download nerd font from
 -- https://www.nerdfonts.com/font-downloads
 vim.cmd([[
-	set guifont=Cousine\ NF:h14:antialias
+	set guifont=Cousine\ NF:h12:antialias
+	set mouse=a
 ]])
 
 vim.o.encoding = "UTF-8"
