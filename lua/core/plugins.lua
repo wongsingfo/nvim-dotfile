@@ -14,7 +14,11 @@ vim.cmd([[
 
 -- Need to install ripgrpe
 -- https://github.com/BurntSushi/ripgrep
---   <choco|apt|brew> install ripgrep
+--   <choco|brew> install ripgrep
+--   curl -LO https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
+--   sudo dpkg -i ripgrep_13.0.0_amd64.deb
+-- Install fd-find
+--   sudo apt install fd-find
 
 require('packer').startup(function(use)
 	-- Packer can manage itself
@@ -24,7 +28,7 @@ require('packer').startup(function(use)
 	use 'github/copilot.vim'
 
 	-- Find extension: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-	-- CocInstall coc-highlight coc-git
+	-- CocInstall coc-highlight coc-git coc-rls coc-rust-analyzer coc-css
 	use { 'neoclide/coc.nvim', branch = 'release' }
 
 	-- Color scheme
@@ -92,14 +96,6 @@ require('packer').startup(function(use)
 		requires = { 'kyazdani42/nvim-web-devicons' },
 		config = function()
 			require'alpha'.setup(require'alpha.themes.startify'.config)
-		end
-	}
-
-	use {
-		"akinsho/toggleterm.nvim",
-		disable = true,
-		config = function()
-			require('toggleterm').setup{}
 		end
 	}
 

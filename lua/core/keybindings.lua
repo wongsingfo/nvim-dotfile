@@ -25,10 +25,7 @@ wk.register({
 		c = ':DiffviewClose',
 	},
 	n = {
-		name = 'NvimTree',
-	},
-	b = {
-		name = 'BufferLine',
+		name = 'NvimTree and BufferLine',
 	},
 	s = {
 		name = 'Neomux and WindowResizer',
@@ -51,27 +48,29 @@ map('n', '<leader>pc', '<cmd>DiffviewClose<cr>', opt)
 map('n', '<c-n>', '<cmd>NvimTreeToggle<CR>', opt)
 map('n', '<leader>nr', '<cmd>NvimTreeRefresh<CR>', opt)
 map('n', '<leader>nf', '<cmd>NvimTreeFindFile<CR>', opt)
--- Terminal
-map('n', '<c-m>', '<cmd>ToggleTerm<CR>', opt)
 -- BufferLine
-map('n', '<leader>bn', '<cmd>BufferLineCycleNext<cr>', opt)
-map('n', '<leader>bp', '<cmd>BufferLineCyclePrev<cr>', opt)
-map('n', '<leader>bl', '<cmd>BufferLineMoveNext<cr>', opt)
-map('n', '<leader>bh', '<cmd>BufferLineMovePrev<cr>', opt)
-map('n', '<leader>bb', '<cmd>BufferLinePick<cr>', opt)
-map('n', '<leader>bc', '<cmd>BufferLinePickClose<cr>', opt)
+map('n', '<leader>nn', '<cmd>BufferLineCycleNext<cr>', opt)
+map('n', '<leader>np', '<cmd>BufferLineCyclePrev<cr>', opt)
+map('n', '<leader>nl', '<cmd>BufferLineMoveNext<cr>', opt)
+map('n', '<leader>nh', '<cmd>BufferLineMovePrev<cr>', opt)
+map('n', '<leader>nb', '<cmd>BufferLinePick<cr>', opt)
+map('n', '<leader>nc', '<cmd>BufferLinePickClose<cr>', opt)
 for i = 1, 9 do
-	map('n', '<c-'..i..'>', '<cmd>BufferLineGoToBuffer '..i..'<cr>', opt)
+	map('n', '<leader>n'..i, '<cmd>BufferLineGoToBuffer '..i..'<cr>', opt)
 end
 -- Window resizer
 vim.g.winresizer_start_key = '<leader>sr'
+-- Neomux
+vim.cmd[[
+	:tnoremap <expr> <C-V> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+]]
 
 wk.register({
 	["<c-n>"] = "NvimTreeToggle",
 	["<c-p>"] = "Telescope find_files",
-	["<c-m>"] = "ToggleTerm",
 	["<c-space>"] = "Coc refresh",
 	["<c-num>"] = "Switch BufferLine",
 	["<c-s>"] = "Exit insert mode in neomux",
+	["<c-v>"] = "Paste reg in terminal mode",
 }, { prefix = '?' })
 
