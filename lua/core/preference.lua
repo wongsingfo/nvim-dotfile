@@ -1,4 +1,6 @@
 local vim = vim
+-- Darwin / Linux / Windows
+local os_name = vim.loop.os_uname().sysname
 
 -- Download nerd font from
 -- https://www.nerdfonts.com/font-downloads
@@ -21,6 +23,8 @@ vim.o.signcolumn = 'yes'
 
 vim.o.splitbelow = true
 vim.o.splitright = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 -- Bufferline needs this to work
 vim.o.termguicolors = true

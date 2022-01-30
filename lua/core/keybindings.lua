@@ -30,10 +30,51 @@ wk.register({
 	s = {
 		name = 'Neomux and WindowResizer',
 	},
+	g = {
+		name = 'Coc',
+	},
+	b = {
+		name = 'NeomuxBuffer',
+	},
 }, { prefix = '<leader>' })
 
 -- Coc
 map('i', '<c-space>', 'coc#refresh()', opt_expr)
+map('n', '<leader>gd', '<cmd>call CocActionAsync("jumpDefinition")<CR>', opt)
+map('n', '<leader>gD', '<cmd>call CocActionAsync("jumpDeclaration")<CR>', opt)
+map('n', '<leader>gr', '<cmd>call CocActionAsync("rename")<CR>', opt)
+map('n', '<leader>gR', '<cmd>call CocActionAsync("refactor")<CR>', opt)
+map('n', '<leader>gu', '<cmd>call CocActionAsync("jumpReferences")<CR>', opt)
+map('n', '<leader>gF', '<cmd>call CocActionAsync("format")<CR>', opt)
+vim.cmd[[
+	nmap <leader>gx  <Plug>(coc-codeaction-cursor)
+	nmap <leader>gX  <Plug>(coc-fix-current)
+	xmap <leader>gf  <Plug>(coc-format-selected)
+	nmap <leader>gf  <Plug>(coc-format-selected)
+	nmap <silent> <leader>gN <Plug>(coc-diagnostic-prev)
+	nmap <silent> <leader>gn <Plug>(coc-diagnostic-next)
+	xmap if <Plug>(coc-funcobj-i)
+	omap if <Plug>(coc-funcobj-i)
+	xmap af <Plug>(coc-funcobj-a)
+	omap af <Plug>(coc-funcobj-a)
+	xmap ic <Plug>(coc-classobj-i)
+	omap ic <Plug>(coc-classobj-i)
+	xmap ac <Plug>(coc-classobj-a)
+	omap ac <Plug>(coc-classobj-a)
+]]
+map('n', 'K', ':lua show_documentation()<cr>', opt)
+function show_documentation()
+	local filetype = vim.bo.filetype
+	if filetype == "vim" or filetype == "help" then
+		vim.api.nvim_command("h " .. vim.fn.expand("<cword>"))
+	elseif vim.fn["coc#rpc#ready"]() then
+		vim.fn.CocActionAsync("doHover")
+	else
+		vim.api.nvim_command(
+		"!" .. vim.bo.keywordprg .. " " .. vim.fn.expand("<cword>")
+		)
+	end
+end
 -- Telescope
 map('n', '<c-p>', '<cmd>Telescope find_files<CR>', opt)
 map('n', '<leader>pg', '<cmd>Telescope live_grep<CR>', opt)
@@ -62,7 +103,7 @@ end
 vim.g.winresizer_start_key = '<leader>sr'
 -- Neomux
 vim.cmd[[
-	:tnoremap <expr> <C-V> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+:tnoremap <expr> <C-V> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 ]]
 
 wk.register({

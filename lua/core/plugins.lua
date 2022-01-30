@@ -28,7 +28,8 @@ require('packer').startup(function(use)
 	use 'github/copilot.vim'
 
 	-- Find extension: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-	-- CocInstall coc-highlight coc-git coc-rls coc-rust-analyzer coc-css
+	-- Language servers: https://github.com/neoclide/coc.nvim/wiki/Language-servers
+	-- CocInstall coc-highlight coc-git coc-rust-analyzer coc-css
 	use { 'neoclide/coc.nvim', branch = 'release' }
 
 	-- Color scheme
@@ -103,12 +104,17 @@ require('packer').startup(function(use)
 		"nikvdp/neomux",
 	}
 
+	-- Stabilize buffer content on window open/close events
 	use {
 		"luukvbaal/stabilize.nvim",
 		config = function() require("stabilize").setup() end
 	}
 
+	-- WindowResizer
 	use 'simeji/winresizer'
+
+	-- Adjust shiftwidth and expandtab
+	use 'tpope/vim-sleuth'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
