@@ -20,6 +20,17 @@ vim.cmd([[
 -- Install fd-find
 --   sudo apt install fd-find
 
+-- Find extension: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+-- Language servers: https://github.com/neoclide/coc.nvim/wiki/Language-servers
+-- See related issue: https://github.com/neoclide/coc.nvim/issues/560
+vim.g.coc_global_extensions = {
+	'coc-highlight', 'coc-git',
+	'coc-rust-analyzer',
+	'coc-css',
+	'coc-cmake',
+	'coc-clangd',
+}
+
 require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
@@ -27,9 +38,6 @@ require('packer').startup(function(use)
 	-- Run `:Copilot setup` to setup
 	use 'github/copilot.vim'
 
-	-- Find extension: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-	-- Language servers: https://github.com/neoclide/coc.nvim/wiki/Language-servers
-	-- CocInstall coc-highlight coc-git coc-rust-analyzer coc-css
 	use { 'neoclide/coc.nvim', branch = 'release' }
 
 	-- Color scheme
