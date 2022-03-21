@@ -40,11 +40,12 @@ wk.register({
 
 -- Coc
 map('i', '<c-space>', 'coc#refresh()', opt_expr)
-map('n', '<leader>gd', '<cmd>call CocActionAsync("jumpDefinition")<CR>', opt)
-map('n', '<leader>gD', '<cmd>call CocActionAsync("jumpDeclaration")<CR>', opt)
+map('n', '<leader>gc', '<cmd>CocList<cr>', opt)
+map('n', 'gd', '<cmd>call CocActionAsync("jumpDefinition")<CR>', opt)
+map('n', 'gD', '<cmd>call CocActionAsync("jumpDeclaration")<CR>', opt)
 map('n', '<leader>gr', '<cmd>call CocActionAsync("rename")<CR>', opt)
 map('n', '<leader>gR', '<cmd>call CocActionAsync("refactor")<CR>', opt)
-map('n', '<leader>gu', '<cmd>call CocActionAsync("jumpReferences")<CR>', opt)
+map('n', 'gr', '<cmd>call CocActionAsync("jumpReferences")<CR>', opt)
 map('n', '<leader>gF', '<cmd>call CocActionAsync("format")<CR>', opt)
 vim.cmd[[
 	nmap <leader>gx  <Plug>(coc-codeaction-cursor)
@@ -62,7 +63,7 @@ vim.cmd[[
 	xmap ac <Plug>(coc-classobj-a)
 	omap ac <Plug>(coc-classobj-a)
 ]]
-map('n', 'K', ':lua show_documentation()<cr>', opt)
+map('n', 'K', '<cmd>lua show_documentation()<cr>', opt)
 function show_documentation()
 	local filetype = vim.bo.filetype
 	if filetype == "vim" or filetype == "help" then
