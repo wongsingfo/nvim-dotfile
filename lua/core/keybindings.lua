@@ -45,6 +45,7 @@ map('n', 'gd', '<cmd>call CocActionAsync("jumpDefinition")<CR>', opt)
 map('n', 'gD', '<cmd>call CocActionAsync("jumpDeclaration")<CR>', opt)
 map('n', '<leader>gr', '<cmd>call CocActionAsync("rename")<CR>', opt)
 map('n', '<leader>gR', '<cmd>call CocActionAsync("refactor")<CR>', opt)
+map('n', '<leader>gs', '<cmd>CocCommand clangd.switchSourceHeader<CR>', opt)
 map('n', 'gr', '<cmd>call CocActionAsync("jumpReferences")<CR>', opt)
 map('n', '<leader>gF', '<cmd>call CocActionAsync("format")<CR>', opt)
 vim.cmd[[

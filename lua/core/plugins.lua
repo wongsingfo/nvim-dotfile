@@ -29,6 +29,7 @@ vim.g.coc_global_extensions = {
 	'coc-css',
 	'coc-cmake',
 	'coc-clangd',
+	'coc-sql',
 }
 
 require('packer').startup(function(use)
