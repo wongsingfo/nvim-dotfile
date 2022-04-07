@@ -27,8 +27,8 @@ wk.register({
 	n = {
 		name = 'NvimTree and BufferLine',
 	},
-	s = {
-		name = 'Neomux and WindowResizer',
+	w = {
+		name = 'WindowResizer',
 	},
 	g = {
 		name = 'Coc',
@@ -101,7 +101,7 @@ for i = 1, 9 do
 	map('n', '<leader>n'..i, '<cmd>BufferLineGoToBuffer '..i..'<cr>', opt)
 end
 -- Window resizer
-vim.g.winresizer_start_key = '<leader>sr'
+vim.g.winresizer_start_key = '<leader>ww'
 -- Neomux
 vim.cmd[[
 :tnoremap <expr> <C-V> '<C-\><C-N>"'.nr2char(getchar()).'pi'

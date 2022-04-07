@@ -108,10 +108,6 @@ require('packer').startup(function(use)
 		end
 	}
 
-	use {
-		"nikvdp/neomux",
-	}
-
 	-- Stabilize buffer content on window open/close events
 	use {
 		"luukvbaal/stabilize.nvim",
