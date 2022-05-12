@@ -24,12 +24,14 @@ vim.cmd([[
 -- Language servers: https://github.com/neoclide/coc.nvim/wiki/Language-servers
 -- See related issue: https://github.com/neoclide/coc.nvim/issues/560
 vim.g.coc_global_extensions = {
-	'coc-highlight', 'coc-git',
+	'coc-highlight',
+	'coc-git',
 	'coc-rust-analyzer',
-	'coc-css',
+	'coc-prettier',
 	'coc-cmake',
 	'coc-clangd',
 	'coc-sql',
+	'coc-tsserver',
 }
 
 require('packer').startup(function(use)
