@@ -32,6 +32,7 @@ vim.g.coc_global_extensions = {
 	'coc-clangd',
 	'coc-sql',
 	'coc-tsserver',
+	'coc-pyright',
 }
 
 require('packer').startup(function(use)
