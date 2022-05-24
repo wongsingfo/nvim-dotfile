@@ -35,5 +35,6 @@ vim.cmd([[
 	syntax enable
 	colorscheme tender
 	let g:lightline = { 'colorscheme': 'tender' }
+	set colorcolumn=80
 ]])
 
