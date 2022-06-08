@@ -19,13 +19,14 @@ local opt_expr = {
 
 wk.register({
 	p = {
-		name = 'Telescope and Diffview',
+		name = 'Telescope Diffview PasteCode',
 		d = ':DiffviewOpen d4a7b0d HEAD~1',
 		D = ':DiffviewFileHistory paths',
 		c = ':DiffviewClose',
+		p = 'set paste',
 	},
 	n = {
-		name = 'NvimTree and BufferLine',
+		name = 'NvimTree BufferLine',
 	},
 	w = {
 		name = 'WindowResizer',
@@ -114,6 +115,8 @@ vim.g.winresizer_start_key = '<leader>ww'
 vim.cmd[[
 :tnoremap <expr> <C-V> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 ]]
+-- paster code
+map('n', '<leader>pp', '<cmd>set paste<cr>"*p<cmd>set nopaste<cr>', opt)
 
 wk.register({
 	["<c-n>"] = "NvimTreeToggle",
