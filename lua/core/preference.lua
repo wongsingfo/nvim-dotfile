@@ -17,8 +17,8 @@ vim.o.number = true
 vim.o.cursorline = true
 vim.o.wrap = false
 
-vim.o.scrolloff = 4
-vim.o.sidescrolloff = 4
+-- vim.o.scrolloff = 4
+-- vim.o.sidescrolloff = 4
 vim.o.signcolumn = 'yes'
 
 vim.o.splitbelow = true
