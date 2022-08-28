@@ -43,6 +43,7 @@ wk.register({
 map('i', '<c-space>', 'coc#refresh()', opt_expr)
 map('n', '<leader>gc', '<cmd>CocList<cr>', opt)
 map('n', 'gd', '<cmd>call CocActionAsync("jumpDefinition")<CR>', opt)
+map('n', 'gp', '<cmd>call CocActionAsync("jumpDefinition", ":vsp")<CR>', opt)
 map('n', 'gD', '<cmd>call CocActionAsync("jumpDeclaration")<CR>', opt)
 map('n', '<leader>gr', '<cmd>call CocActionAsync("rename")<CR>', opt)
 map('n', '<leader>gR', '<cmd>call CocActionAsync("refactor")<CR>', opt)
@@ -86,9 +87,9 @@ function show_documentation()
 	end
 end
 -- Telescope
-map('n', '<c-p>', '<cmd>Telescope find_files<CR>', opt)
+map('n', '<c-p>', '<cmd>Telescope buffers<CR>', opt)
+map('n', '<leader>pf', '<cmd>Telescope find_files<CR>', opt)
 map('n', '<leader>pg', '<cmd>Telescope live_grep<CR>', opt)
-map('n', '<leader>pb', '<cmd>Telescope buffers<CR>', opt)
 map('n', '<leader>pt', '<cmd>Telescope help_tags<CR>', opt)
 -- Diffview
 map('n', '<leader>pd', '<cmd>DiffviewOpen<CR>', opt)
@@ -115,7 +116,7 @@ vim.g.winresizer_start_key = '<leader>ww'
 vim.cmd[[
 :tnoremap <expr> <C-V> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 ]]
--- paster code
+-- paste code
 map('n', '<leader>pp', '<cmd>set paste<cr>"*p<cmd>set nopaste<cr>', opt)
 
 wk.register({

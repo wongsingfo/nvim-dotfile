@@ -68,7 +68,9 @@ require('packer').startup(function(use)
 	use 'tpope/vim-surround'
 
 	-- Use `s` to move the cursor
-	use 'justinmk/vim-sneak'
+	-- use 'justinmk/vim-sneak'
+
+	use 'easymotion/vim-easymotion'
 
 	-- use 'chrisbra/vim-commentary'
 	use 'tomtom/tcomment_vim'
