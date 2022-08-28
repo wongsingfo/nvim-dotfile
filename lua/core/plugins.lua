@@ -70,7 +70,8 @@ require('packer').startup(function(use)
 	-- Use `s` to move the cursor
 	use 'justinmk/vim-sneak'
 
-	use 'chrisbra/vim-commentary'
+	-- use 'chrisbra/vim-commentary'
+	use 'tomtom/tcomment_vim'
 
 	use {
 		'nvim-lualine/lualine.nvim',
