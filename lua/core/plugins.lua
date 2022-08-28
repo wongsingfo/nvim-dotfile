@@ -34,6 +34,7 @@ vim.g.coc_global_extensions = {
 	'coc-tsserver',
 	'coc-pyright',
 	'coc-emmet',
+	'coc-go',
 }
 
 require('packer').startup(function(use)
@@ -46,7 +47,8 @@ require('packer').startup(function(use)
 	use { 'neoclide/coc.nvim', branch = 'release' }
 
 	-- Color scheme
-	use 'jacoborus/tender.vim'
+	-- use 'jacoborus/tender.vim'
+	use 'morhetz/gruvbox'
 
 	-- File manager
 	use {

@@ -32,10 +32,15 @@ vim.o.termguicolors = true
 
 vim.g.neovide_cursor_vfx_mode = "railgun"
 
+-- We prevent the color scheme from changing the background so that we can set
+-- change the background opacity in Windows Terminal.
+vim.cmd([[
+	autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+]])
 vim.cmd([[
 	syntax enable
-	colorscheme tender
-	let g:lightline = { 'colorscheme': 'tender' }
+	colorscheme gruvbox
+	let g:lightline = { 'colorscheme': 'gruvbox' }
 	set colorcolumn=80
 ]])
 
