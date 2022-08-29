@@ -69,8 +69,14 @@ require('packer').startup(function(use)
 
 	-- Use `s` to move the cursor
 	-- use 'justinmk/vim-sneak'
-
-	use 'easymotion/vim-easymotion'
+	-- use 'easymotion/vim-easymotion'
+	use {
+		'phaazon/hop.nvim',
+		branch = 'v2',
+		config = function()
+			require'hop'.setup {}
+		end
+	}
 
 	-- use 'chrisbra/vim-commentary'
 	use 'tomtom/tcomment_vim'
