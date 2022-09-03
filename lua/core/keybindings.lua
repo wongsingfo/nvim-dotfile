@@ -122,6 +122,7 @@ vim.cmd[[
 -- map('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>", {})
 -- map('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<cr>", {})
 map('', 's', "<cmd>HopChar1MW<cr>", opt)
+map('o', 'Z', "<cmd>HopChar1MW<cr>", opt)
 -- paste code
 map('n', '<leader>pp', '<cmd>set paste<cr>"*p<cmd>set nopaste<cr>', opt)
 
