@@ -20,7 +20,7 @@ local opt_expr = {
 wk.register({
 	p = {
 		name = 'Telescope Diffview PasteCode',
-		d = ':DiffviewOpen d4a7b0d HEAD~1',
+		d = ':DiffviewOpen',
 		D = ':DiffviewFileHistory paths',
 		c = ':DiffviewClose',
 		p = 'set paste',
@@ -125,6 +125,9 @@ map('', 's', "<cmd>HopChar1MW<cr>", opt)
 map('o', 'Z', "<cmd>HopChar1MW<cr>", opt)
 -- paste code
 map('n', '<leader>pp', '<cmd>set paste<cr>"*p<cmd>set nopaste<cr>', opt)
+-- Lazygit
+-- https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Keybindings_en.md
+map('n', '<leader>lg', '<cmd>LazyGit<cr>', opt)
 
 wk.register({
 	["<c-n>"] = "NvimTreeToggle",
