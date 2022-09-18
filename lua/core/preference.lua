@@ -44,3 +44,8 @@ vim.cmd([[
 	set colorcolumn=80
 ]])
 
+vim.cmd([[
+	set listchars=tab:»\ ,trail:·,nbsp:␣,extends:»,precedes:«
+	set list
+]])
+
