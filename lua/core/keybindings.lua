@@ -37,6 +37,12 @@ wk.register({
 	b = {
 		name = 'NeomuxBuffer',
 	},
+	t = {
+		name = 'Textmode',
+	},
+	l = {
+		name = 'Lazygit',
+	},
 }, { prefix = '<leader>' })
 
 -- Coc
@@ -138,3 +144,10 @@ wk.register({
 	["<c-v>"] = "Paste reg in terminal mode",
 }, { prefix = '?' })
 
+map('n', '<leader>tm', '<cmd>lua toggle_textmode()<cr>', opt)
+function toggle_textmode()
+	local enabled = not vim.wo.spell
+	vim.wo.wrap = enabled
+	vim.wo.spell = enabled
+	vim.wo.linebreak = enabled
+end
