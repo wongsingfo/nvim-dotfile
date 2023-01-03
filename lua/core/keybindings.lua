@@ -96,6 +96,7 @@ end
 map('n', '<c-p>', '<cmd>Telescope buffers<CR>', opt)
 map('n', '<leader>pf', '<cmd>Telescope find_files<CR>', opt)
 map('n', '<leader>pg', '<cmd>Telescope live_grep<CR>', opt)
+map('n', '<leader>ps', '<cmd>Telescope grep_string<CR>', opt)
 map('n', '<leader>pt', '<cmd>Telescope help_tags<CR>', opt)
 -- Diffview
 map('n', '<leader>pd', '<cmd>DiffviewOpen<CR>', opt)
