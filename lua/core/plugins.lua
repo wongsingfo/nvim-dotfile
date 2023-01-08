@@ -116,6 +116,14 @@ require('packer').startup(function(use)
 		end
 	}
 
+	-- See the context
+	use {
+		'nvim-treesitter/nvim-treesitter-context',
+		config = function()
+			require'treesitter-context'.setup{}
+		end
+	}
+
 	use {
 		'folke/which-key.nvim',
 		config = function()
