@@ -124,6 +124,8 @@ require('packer').startup(function(use)
 		end
 	}
 
+	use 'liuchengxu/vista.vim'
+
 	use {
 		'folke/which-key.nvim',
 		config = function()

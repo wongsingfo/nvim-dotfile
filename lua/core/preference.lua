@@ -27,6 +27,8 @@ vim.o.splitright = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+vim.g.vista_default_executive = 'coc'
+
 -- Bufferline needs this to work
 vim.o.termguicolors = true
 
