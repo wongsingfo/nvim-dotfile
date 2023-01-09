@@ -34,9 +34,6 @@ wk.register({
 	g = {
 		name = 'Coc',
 	},
-	b = {
-		name = 'NeomuxBuffer',
-	},
 	t = {
 		name = 'Textmode',
 	},
@@ -49,7 +46,8 @@ wk.register({
 map('i', '<c-space>', 'coc#refresh()', opt_expr)
 map('n', '<leader>gc', '<cmd>CocList<cr>', opt)
 map('n', 'gd', '<cmd>call CocActionAsync("jumpDefinition")<CR>', opt)
-map('n', 'gp', '<cmd>call CocActionAsync("jumpDefinition", ":vsp")<CR>', opt)
+-- map('n', 'gp', '<cmd>call CocActionAsync("jumpDefinition", ":vsp")<CR>', opt)
+map('n', 'gp', '<cmd>call CocActionAsync("jumpDefinition", ":tabnew")<CR>', opt)
 map('n', 'gD', '<cmd>call CocActionAsync("jumpDeclaration")<CR>', opt)
 map('n', '<leader>gr', '<cmd>call CocActionAsync("rename")<CR>', opt)
 map('n', '<leader>gR', '<cmd>call CocActionAsync("refactor")<CR>', opt)
@@ -119,6 +117,11 @@ map('n', '<leader>nc', '<cmd>BufferLinePickClose<cr>', opt)
 for i = 1, 9 do
 	map('n', '<leader>n'..i, '<cmd>BufferLineGoToBuffer '..i..'<cr>', opt)
 end
+-- Tab naviagtion
+map('n', 'tj', '<cmd>tabnext<cr>', opt)
+map('n', 'tk', '<cmd>tabprevious<cr>', opt)
+map('n', 'tn', '<cmd>tabnew<cr>', opt)
+map('n', 'tc', '<cmd>tabclose<cr>', opt)
 -- Window resizer
 vim.g.winresizer_start_key = '<leader>ww'
 -- Neomux
