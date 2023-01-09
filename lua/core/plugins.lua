@@ -60,6 +60,11 @@ require('packer').startup(function(use)
 					mappings = {
 						list = { { key = "?", action = "toggle_help" } }
 					}
+				},
+				actions = {
+					open_file = {
+						resize_window = false
+					}
 				}
 			}
 		end
