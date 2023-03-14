@@ -50,33 +50,7 @@ require('packer').startup(function(use)
 	-- use 'jacoborus/tender.vim'
 	use 'morhetz/gruvbox'
 
-	-- File manager
-	use {
-		'kyazdani42/nvim-tree.lua',
-		requires = 'kyazdani42/nvim-web-devicons',
-		config = function()
-			require'nvim-tree'.setup {
-				view = {
-					mappings = {
-						list = { { key = "?", action = "toggle_help" } }
-					},
-					side = "right",
-					float = {
-						enable = false,
-						open_win_config = {
-							height = 1000,
-							col = 1000,
-						}
-					},
-				},
-				actions = {
-					open_file = {
-						resize_window = false
-					}
-				}
-			}
-		end
-	}
+	use 'tpope/vim-vinegar'
 
 	use 'tpope/vim-surround'
 
@@ -96,7 +70,7 @@ require('packer').startup(function(use)
 
 	use {
 		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+		requires = 'kyazdani42/nvim-web-devicons',
 		config = function()
 			require('lualine').setup {}
 		end
