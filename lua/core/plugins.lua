@@ -59,7 +59,15 @@ require('packer').startup(function(use)
 				view = {
 					mappings = {
 						list = { { key = "?", action = "toggle_help" } }
-					}
+					},
+					side = "right",
+					float = {
+						enable = false,
+						open_win_config = {
+							height = 1000,
+							col = 1000,
+						}
+					},
 				},
 				actions = {
 					open_file = {

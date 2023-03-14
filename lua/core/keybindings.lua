@@ -106,7 +106,7 @@ map('n', '<c-n>', '<cmd>NvimTreeToggle<CR>', opt)
 map('n', '<leader>nr', '<cmd>NvimTreeRefresh<CR>', opt)
 map('n', '<leader>nf', '<cmd>NvimTreeFindFile<CR>', opt)
 -- Vista
-map('n', '<c-m>', '<cmd>Vista!!<CR>', opt)
+map('n', '<leader>vi', '<cmd>Vista!!<CR>', opt)
 -- BufferLine
 map('n', '<leader>nn', '<cmd>BufferLineCycleNext<cr>', opt)
 map('n', '<leader>np', '<cmd>BufferLineCyclePrev<cr>', opt)
