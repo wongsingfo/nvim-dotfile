@@ -48,7 +48,8 @@ require('packer').startup(function(use)
 
 	-- Color scheme
 	-- use 'jacoborus/tender.vim'
-	use 'morhetz/gruvbox'
+	-- use 'morhetz/gruvbox'
+	use 'folke/tokyonight.nvim'
 
 	use 'tpope/vim-vinegar'
 
@@ -72,7 +73,11 @@ require('packer').startup(function(use)
 		'nvim-lualine/lualine.nvim',
 		requires = 'kyazdani42/nvim-web-devicons',
 		config = function()
-			require('lualine').setup {}
+			require('lualine').setup {
+				options = {
+					theme = 'tokyonight',
+				},
+			}
 		end
 	}
 
@@ -92,7 +97,8 @@ require('packer').startup(function(use)
 				auto_install = true,
 				highlight = {
 					enable = true,
-
+					-- The nvim-treesitter cannot handle [[ ]] comments
+					disable = { "lua" },
 					-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
 					-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
 					-- Using this option may slow down your editor, and you may see some duplicate highlights.

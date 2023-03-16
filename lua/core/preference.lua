@@ -36,14 +36,14 @@ vim.g.neovide_cursor_vfx_mode = "railgun"
 
 -- We prevent the color scheme from changing the background so that we can set
 -- change the background opacity in Windows Terminal.
-vim.cmd([[
-	autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-]])
+-- vim.cmd([[
+-- 	autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+-- ]])
 vim.cmd([[
 	syntax enable
-	colorscheme gruvbox
+	colorscheme tokyonight
 	let g:lightline = { 'colorscheme': 'gruvbox' }
-	set colorcolumn=80
+	" set colorcolumn=80
 ]])
 
 vim.cmd([[
@@ -53,9 +53,9 @@ vim.cmd([[
 
 if vim.loop.os_uname().sysname == "Linux" then
 vim.cmd([[
-autocmd InsertLeave * :silent !fcitx5-remote -c
-autocmd BufCreate *   :silent !fcitx5-remote -c
-autocmd BufEnter *    :silent !fcitx5-remote -c
-autocmd BufLeave *    :silent !fcitx5-remote -c
+	autocmd InsertLeave * :silent !fcitx5-remote -c
+	autocmd BufCreate *   :silent !fcitx5-remote -c
+	autocmd BufEnter *    :silent !fcitx5-remote -c
+	autocmd BufLeave *    :silent !fcitx5-remote -c
 ]])
 end
