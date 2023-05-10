@@ -159,6 +159,21 @@ require('packer').startup(function(use)
 	-- Adjust shiftwidth and expandtab
 	use 'tpope/vim-sleuth'
 
+	-- ChatGPT
+	use({
+		"jackMort/ChatGPT.nvim",
+		config = function()
+			require("chatgpt").setup({
+				api_key_cmd = "printenv OPENAI_KEY",
+			})
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim"
+		}
+	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then
