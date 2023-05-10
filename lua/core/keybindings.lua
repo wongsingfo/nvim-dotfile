@@ -150,6 +150,11 @@ wk.register({
 	["<c-v>"] = "Paste reg in terminal mode",
 }, { prefix = '?' })
 
+-- Copy to clipboard
+vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
+vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
+vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
+
 map('n', '<leader>tm', '<cmd>lua toggle_textmode()<cr>', opt)
 function toggle_textmode()
 	local enabled = not vim.wo.spell
@@ -157,3 +162,19 @@ function toggle_textmode()
 	vim.wo.spell = enabled
 	vim.wo.linebreak = enabled
 end
+
+local chatgpt = require("chatgpt")
+wk.register({
+	p = {
+		name = "ChatGPT",
+		e = {
+			function()
+				chatgpt.edit_with_instructions()
+			end,
+			"Edit with instructions",
+		},
+	},
+}, {
+	prefix = "<leader>",
+	mode = "v",
+})
