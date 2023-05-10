@@ -41,7 +41,7 @@ vim.g.neovide_cursor_vfx_mode = "railgun"
 -- ]])
 vim.cmd([[
 	syntax enable
-	colorscheme tokyonight
+	colorscheme gruvbox
 	let g:lightline = { 'colorscheme': 'gruvbox' }
 	" set colorcolumn=80
 ]])

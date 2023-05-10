@@ -48,8 +48,8 @@ require('packer').startup(function(use)
 
 	-- Color scheme
 	-- use 'jacoborus/tender.vim'
-	-- use 'morhetz/gruvbox'
-	use 'folke/tokyonight.nvim'
+	use 'morhetz/gruvbox'
+	-- use 'folke/tokyonight.nvim'
 
 	use 'tpope/vim-vinegar'
 
@@ -74,9 +74,9 @@ require('packer').startup(function(use)
 		requires = 'kyazdani42/nvim-web-devicons',
 		config = function()
 			require('lualine').setup {
-				options = {
-					theme = 'tokyonight',
-				},
+				-- options = {
+				-- 	theme = 'tokyonight',
+				-- },
 			}
 		end
 	}
