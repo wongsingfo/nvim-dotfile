@@ -128,7 +128,7 @@ require('packer').startup(function(use)
 
 	use {
 		'akinsho/bufferline.nvim',
-		requires = 'kyazdani43/nvim-web-devicons',
+		requires = 'kyazdani42/nvim-web-devicons',
 		config = function()
 			require('bufferline').setup {}
 		end
@@ -141,7 +141,7 @@ require('packer').startup(function(use)
 
 	use {
 		'goolord/alpha-nvim',
-		requires = { 'kyazdani42/nvim-web-devicons' },
+		requires = { 'nvim-tree/nvim-web-devicons' },
 		config = function()
 			require'alpha'.setup(require'alpha.themes.startify'.config)
 		end
@@ -160,25 +160,33 @@ require('packer').startup(function(use)
 	use 'tpope/vim-sleuth'
 
 	-- ChatGPT
-	use({
+	use {
 		"jackMort/ChatGPT.nvim",
 		config = function()
-			require("chatgpt").setup({
+			require("chatgpt").setup {
 				api_key_cmd = "printenv OPENAI_KEY",
-			})
+			}
 		end,
 		requires = {
 			"MunifTanjim/nui.nvim",
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim"
 		}
-	})
+	}
 
 	-- Clipboard
 	use {
 		'ojroques/nvim-osc52',
 		config = function()
 			require('osc52').setup {}
+		end
+	}
+
+	use {
+		"folke/trouble.nvim",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("trouble").setup { }
 		end
 	}
 
