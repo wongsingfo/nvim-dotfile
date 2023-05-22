@@ -36,12 +36,30 @@ require('lazy').setup({
 	"tpope/vim-sleuth",
 	"ojroques/nvim-osc52",
 	"tpope/vim-vinegar",
+	-- 'f-person/git-blame.nvim',
+	{
+		'lewis6991/gitsigns.nvim',
+		opts = {},
+	},
 
 	-- UI
 	-- {
 	-- 	"nvim-lualine/lualine.nvim",
 	-- 	opts = {},
 	-- },
+	{
+		-- Show LSP status
+		'j-hui/fidget.nvim',
+		config = function()
+			require"fidget".setup{}
+		end
+	},
+	{
+		'akinsho/bufferline.nvim',
+		config = function()
+			require"bufferline".setup{}
+		end
+	},
 	{ "nvim-tree/nvim-web-devicons" },
 	-- {
 	-- 	"stevearc/dressing.nvim",
