@@ -7,6 +7,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 local map = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
+
 local opt = {
 	noremap = true,
 	silent = true,
@@ -31,9 +33,6 @@ wk.register({
 	w = {
 		name = 'WindowResizer',
 	},
-	g = {
-		name = 'Coc',
-	},
 	t = {
 		name = 'Textmode',
 	},
@@ -42,54 +41,94 @@ wk.register({
 	},
 }, { prefix = '<leader>' })
 
--- Coc
-map('i', '<c-space>', 'coc#refresh()', opt_expr)
-map('n', '<leader>gc', '<cmd>CocList<cr>', opt)
-map('n', 'gd', '<cmd>call CocActionAsync("jumpDefinition")<CR>', opt)
--- map('n', 'gp', '<cmd>call CocActionAsync("jumpDefinition", ":vsp")<CR>', opt)
-map('n', 'gp', '<cmd>call CocActionAsync("jumpDefinition", ":tabnew")<CR>', opt)
-map('n', 'gD', '<cmd>call CocActionAsync("jumpDeclaration")<CR>', opt)
-map('n', '<leader>gr', '<cmd>call CocActionAsync("rename")<CR>', opt)
-map('n', '<leader>gR', '<cmd>call CocActionAsync("refactor")<CR>', opt)
-map('n', '<leader>gs', '<cmd>CocCommand clangd.switchSourceHeader<CR>', opt)
-map('n', 'gr', '<cmd>call CocActionAsync("jumpReferences")<CR>', opt)
-map('n', '<leader>gF', '<cmd>call CocActionAsync("format")<CR>', opt)
-vim.cmd[[
-	nmap <leader>gx  <Plug>(coc-codeaction-cursor)
-	nmap <leader>gX  <Plug>(coc-fix-current)
-	xmap <leader>gf  <Plug>(coc-format-selected)
-	nmap <leader>gf  <Plug>(coc-format-selected)
-	nmap <silent> <leader>gN <Plug>(coc-diagnostic-prev)
-	nmap <silent> <leader>gn <Plug>(coc-diagnostic-next)
-	xmap if <Plug>(coc-funcobj-i)
-	omap if <Plug>(coc-funcobj-i)
-	xmap af <Plug>(coc-funcobj-a)
-	omap af <Plug>(coc-funcobj-a)
-	xmap ic <Plug>(coc-classobj-i)
-	omap ic <Plug>(coc-classobj-i)
-	xmap ac <Plug>(coc-classobj-a)
-	omap ac <Plug>(coc-classobj-a)
-	
-	nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-	nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-	inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-	inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-	vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-	vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-]]
-map('n', 'K', '<cmd>lua show_documentation()<cr>', opt)
-function show_documentation()
-	local filetype = vim.bo.filetype
-	if filetype == "vim" or filetype == "help" then
-		vim.api.nvim_command("h " .. vim.fn.expand("<cword>"))
-	elseif vim.fn["coc#rpc#ready"]() then
-		vim.fn.CocActionAsync("doHover")
-	else
-		vim.api.nvim_command(
-		"!" .. vim.bo.keywordprg .. " " .. vim.fn.expand("<cword>")
-		)
-	end
-end
+-- LSP Saga
+-- LSP finder - Find the symbol's definition
+-- If there is no definition, it will instead be hidden
+-- When you use an action in finder like "open vsplit",
+-- you can use <C-t> to jump back
+keymap("n", "gr", "<cmd>Lspsaga lsp_finder<CR>")
+
+-- Code action
+keymap({"n", "v"}, "<leader>gx", "<cmd>Lspsaga code_action<CR>")
+
+-- Rename all occurrences of the hovered word for the entire file
+-- keymap("n", "gr", "<cmd>Lspsaga rename<CR>")
+
+-- Rename all occurrences of the hovered word for the selected files
+keymap("n", "<leader>gr", "<cmd>Lspsaga rename ++project<CR>")
+
+-- Peek definition
+-- You can edit the file containing the definition in the floating window
+-- It also supports open/vsplit/etc operations, do refer to "definition_action_keys"
+-- It also supports tagstack
+-- Use <C-t> to jump back
+keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
+
+-- Go to definition
+keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
+
+-- Peek type definition
+-- You can edit the file containing the type definition in the floating window
+-- It also supports open/vsplit/etc operations, do refer to "definition_action_keys"
+-- It also supports tagstack
+-- Use <C-t> to jump back
+-- keymap("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
+
+-- Go to type definition
+-- keymap("n", "gt", "<cmd>Lspsaga goto_type_definition<CR>")
+
+-- Show line diagnostics
+-- You can pass argument ++unfocus to
+-- unfocus the show_line_diagnostics floating window
+-- keymap("n", "<leader>gl", "<cmd>Lspsaga show_line_diagnostics<CR>")
+
+-- Show buffer diagnostics
+keymap("n", "<leader>ge", "<cmd>Lspsaga show_buf_diagnostics<CR>")
+
+-- Show workspace diagnostics
+keymap("n", "<leader>gE", "<cmd>Lspsaga show_workspace_diagnostics<CR>")
+
+-- Show cursor diagnostics
+-- keymap("n", "<leader>gc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+
+-- Diagnostic jump
+-- You can use <C-o> to jump back to your previous location
+keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+
+-- Diagnostic jump with filters such as only jumping to an error
+keymap("n", "[E", function()
+  require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+end)
+keymap("n", "]E", function()
+  require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+end)
+
+-- Toggle outline
+keymap("n","<leader>go", "<cmd>Lspsaga outline<CR>")
+
+-- Hover Doc
+-- If there is no hover doc,
+-- there will be a notification stating that
+-- there is no information available.
+-- To disable it just use ":Lspsaga hover_doc ++quiet"
+-- Pressing the key twice will enter the hover window
+keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+
+-- If you want to keep the hover window in the top right hand corner,
+-- you can pass the ++keep argument
+-- Note that if you use hover with ++keep, pressing this key again will
+-- close the hover window. If you want to jump to the hover window
+-- you should use the wincmd command "<C-w>w"
+keymap("n", "<leader>gK", "<cmd>Lspsaga hover_doc ++keep<CR>")
+
+-- Call hierarchy
+-- keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
+-- keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
+
+-- Floating terminal
+keymap({"n", "t"}, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
+
 -- Telescope
 map('n', '<c-p>', '<cmd>Telescope buffers<CR>', opt)
 map('n', '<leader>pf', '<cmd>Telescope find_files<CR>', opt)
@@ -102,11 +141,11 @@ map('n', '<leader>pD', '<cmd>DiffviewFileHistory<cr>', opt)
 map('n', '<leader>pr', '<cmd>DiffviewRefresh<cr>', opt)
 map('n', '<leader>pc', '<cmd>DiffviewClose<cr>', opt)
 -- NvimTree
-map('n', '<c-n>', '<cmd>NvimTreeToggle<CR>', opt)
-map('n', '<leader>nr', '<cmd>NvimTreeRefresh<CR>', opt)
-map('n', '<leader>nf', '<cmd>NvimTreeFindFile<CR>', opt)
+-- map('n', '<c-n>', '<cmd>NvimTreeToggle<CR>', opt)
+-- map('n', '<leader>nr', '<cmd>NvimTreeRefresh<CR>', opt)
+-- map('n', '<leader>nf', '<cmd>NvimTreeFindFile<CR>', opt)
 -- Vista
-map('n', '<leader>vi', '<cmd>Vista!!<CR>', opt)
+-- map('n', '<leader>vi', '<cmd>Vista!!<CR>', opt)
 -- BufferLine
 map('n', '<leader>nn', '<cmd>BufferLineCycleNext<cr>', opt)
 map('n', '<leader>np', '<cmd>BufferLineCyclePrev<cr>', opt)
@@ -133,8 +172,8 @@ vim.cmd[[
 -- map('', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
 -- map('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>", {})
 -- map('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<cr>", {})
-map('', 's', "<cmd>HopChar1MW<cr>", opt)
-map('o', 'Z', "<cmd>HopChar1MW<cr>", opt)
+-- map('', 's', "<cmd>HopChar1MW<cr>", opt)
+-- map('o', 'Z', "<cmd>HopChar1MW<cr>", opt)
 -- paste code
 map('n', '<leader>pp', '<cmd>set paste<cr>"*p<cmd>set nopaste<cr>', opt)
 -- Lazygit
@@ -162,19 +201,3 @@ function toggle_textmode()
 	vim.wo.spell = enabled
 	vim.wo.linebreak = enabled
 end
-
-local chatgpt = require("chatgpt")
-wk.register({
-	p = {
-		name = "ChatGPT",
-		e = {
-			function()
-				chatgpt.edit_with_instructions()
-			end,
-			"Edit with instructions",
-		},
-	},
-}, {
-	prefix = "<leader>",
-	mode = "v",
-})

@@ -10,11 +10,11 @@ vim.cmd([[
 ]])
 
 vim.o.encoding = "UTF-8"
-vim.o.fileencoding = 'utf-8'
+-- vim.o.fileencoding = 'utf-8'
 
 vim.o.number = true
 -- vim.o.relativenumber = true
-vim.o.cursorcolumn = true
+-- vim.o.cursorcolumn = true
 vim.o.cursorline = true
 vim.o.wrap = false
 
@@ -41,8 +41,6 @@ vim.g.neovide_cursor_vfx_mode = "railgun"
 -- ]])
 vim.cmd([[
 	syntax enable
-	colorscheme gruvbox
-	let g:lightline = { 'colorscheme': 'gruvbox' }
 	" set colorcolumn=80
 ]])
 
@@ -50,12 +48,3 @@ vim.cmd([[
 	set listchars=tab:»\ ,trail:•,nbsp:␣,extends:»,precedes:«
 	set list
 ]])
-
-if vim.loop.os_uname().sysname == "Linux" then
-vim.cmd([[
-	autocmd InsertLeave * :silent !fcitx5-remote -c
-	autocmd BufCreate *   :silent !fcitx5-remote -c
-	autocmd BufEnter *    :silent !fcitx5-remote -c
-	autocmd BufLeave *    :silent !fcitx5-remote -c
-]])
-end
