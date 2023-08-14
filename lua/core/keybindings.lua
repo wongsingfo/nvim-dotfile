@@ -129,6 +129,8 @@ keymap("n", "<leader>gK", "<cmd>Lspsaga hover_doc ++keep<CR>")
 -- Floating terminal
 keymap({"n", "t"}, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
 
+keymap("n", "<leader>gs", "<cmd>ClangdSwitchSourceHeader<CR>")
+
 -- Telescope
 map('n', '<c-p>', '<cmd>Telescope buffers<CR>', opt)
 map('n', '<leader>pf', '<cmd>Telescope find_files<CR>', opt)

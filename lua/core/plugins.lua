@@ -41,6 +41,7 @@ require('lazy').setup({
 		'lewis6991/gitsigns.nvim',
 		opts = {},
 	},
+	"sindrets/diffview.nvim",
 
 	-- UI
 	-- {
@@ -102,6 +103,7 @@ require('lazy').setup({
 					"lua",
 					"bash",
 					"rust",
+					"python",
 					"markdown",
 					"markdown_inline",
 				},
@@ -120,6 +122,7 @@ require('lazy').setup({
 	},
 	{
 		"zbirenbaum/copilot.lua",
+		enabled = false,
 		opts = {
 			-- disable copilot.lua's suggestion and panel modules,
 			-- as they can interfere with completions properly
@@ -175,9 +178,19 @@ require('lazy').setup({
 			{ "hrsh7th/cmp-path" },
 			{
 				"zbirenbaum/copilot-cmp",
+				enabled = false,
 				after = { "zbirenbaum/copilot.lua" },
 				config = function ()
 					require("copilot_cmp").setup()
+				end
+			},
+			{
+				"jcdickinson/codeium.nvim",
+				dependencies = {
+					"nvim-lua/plenary.nvim",
+				},
+				config = function()
+					require("codeium").setup {}
 				end
 			},
 			-- { "lukas-reineke/cmp-under-comparator" },
@@ -206,6 +219,7 @@ require('lazy').setup({
 				}),
 				sources = cmp.config.sources({
 					{ name = 'copilot' },
+					{ name = 'codeium' },
 					{ name = 'nvim_lsp' },
 					{ name = 'path' },
 					-- { name = 'vsnip' }, -- For vsnip users.
@@ -217,9 +231,12 @@ require('lazy').setup({
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
-						mode = "text",
+						mode = "symbol",
 						max_width = 50,
-						symbol_map = { Copilot = "" }
+						symbol_map = {
+							Copilot = "",
+							Codeium = "",
+						}
 					})
 				}
 			})
